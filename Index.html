@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warsaw Transportation Group | Transport i Logistyka</title>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #f59e0b;
+            --light: #f8fafc;
+            --text: #334155;
+        }
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; color: var(--text); background: #fff; }
+        
+        /* Nawigacja */
+        nav { background: var(--primary); color: #fff; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .logo { font-weight: bold; font-size: 1.3rem; letter-spacing: 1px; color: #fff; text-decoration: none; }
+        .logo span { color: var(--accent); }
+        .nav-links a { color: #cbd5e1; text-decoration: none; margin-left: 20px; font-size: 0.95rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Baner główny */
+        .hero { background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), #1e293b; color: #fff; text-align: center; padding: 6rem 1.5rem; }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; max-width: 650px; margin: 0 auto 2rem; color: #cbd5e1; }
+        .btn { background: var(--accent); color: var(--primary); padding: 14px 28px; text-decoration: none; font-weight: bold; border-radius: 5px; display: inline-block; border: none; cursor: pointer; font-size: 1rem; }
+        .btn:hover { background: #d97706; color: #fff; }
+
+        /* Sekcje */
+        section { padding: 4rem 5%; max-width: 1100px; margin: auto; }
+        h2 { text-align: center; font-size: 2rem; color: var(--primary); margin-bottom: 2.5rem; }
+        
+        /* Siatka usług i floty */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .box { background: var(--light); padding: 2rem; border-radius: 8px; border-top: 4px solid var(--accent); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .box h3 { margin-top: 0; color: var(--primary); }
+
+        /* Formularz wyceny */
+        .quote-section { background: var(--light); border-radius: 10px; padding: 3rem 2rem; }
+        form { max-width: 600px; margin: auto; display: flex; flex-direction: column; gap: 15px; }
+        input, textarea, select { padding: 12px; border: 1px solid #cbd5e1; border-radius: 5px; font-size: 1rem; font-family: inherit; }
+        
+        footer { background: var(--primary); color: #94a3b8; text-align: center; padding: 2rem; margin-top: 4rem; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">WARSAW <span>TRANSPORTATION</span> GROUP</a>
+        <div class="nav-links">
+            <a href="#uslugi">Usługi</a>
+            <a href="#flota">Flota</a>
+            <a href="#wycena">Szybka wycena</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Niezawodny transport w Polsce i Europie</h1>
+        <p>Dostarczamy ładunki na czas. Kompleksowa spedycja, transport dedykowany oraz logistyka kontraktowa z bazą w Warszawie.</p>
+        <a href="#wycena" class="btn">Zamów bezpłatną wycenę</a>
+    </div>
+
+    <section id="uslugi">
+        <h2>Zakres działalności</h2>
+        <div class="grid">
+            <div class="box">
+                <h3>Transport Całopojazdowy (FTL)</h3>
+                <p>Bezpośrednie przewozy bez przeładunków na trasach krajowych i międzynarodowych.</p>
+            </div>
+            <div class="box">
+                <h3>Transport Ekspresowy</h3>
+                <p>Pilne dostawy busami do 3,5t – szybki załadunek i ekspresowy dojazd w dowolny punkt UE.</p>
+            </div>
+            <div class="box">
+                <h3>Spedycja i Logistyka</h3>
+                <p>Pełne wsparcie w planowaniu łańcucha dostaw, monitoring GPS 24/7 oraz ubezpieczenie OCP.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="flota">
+        <h2>Nasza Flota</h2>
+        <div class="grid">
+            <div class="box">
+                <h3>Busy Plandeki (do 10 palet)</h3>
+                <p>Idealne do szybkich transportów ekspresowych w miastach oraz na długich trasach.</p>
+            </div>
+            <div class="box">
+                <h3>Zestawy 13,6m (Firanki / Mega)</h3>
+                <p>Pojemność do 33 europalet, ładowność do 24 ton. Nowoczesne ciągniki spełniające normy Euro 6.</p>
+            </div>
+            <div class="box">
+                <h3>Chłodnie</h3>
+                <p>Transport w kontrolowanej temperaturze z pełnym wydrukiem termografu.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="wycena">
+        <div class="quote-section">
+            <h2>Zapytaj o wycenę transportu</h2>
+            <!-- W miejsce # wklej link z Formspree.io, aby odbierać wiadomości -->
+            <form action="#" method="POST">
+                <input type="text" name="name" placeholder="Imię i nazwisko / Nazwa firmy" required>
+                <input type="email" name="email" placeholder="Twój adres e-mail" required>
+                <input type="text" name="route" placeholder="Trasa (np. Warszawa -> Berlin)" required>
+                <textarea name="details" rows="4" placeholder="Opis ładunku (waga, wymiary, termin załadunku)" required></textarea>
+                <button type="submit" class="btn">Wyślij zapytanie</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>Warsaw Transportation Group</strong> | Warszawa, Polska</p>
+        <p>Tel: +48 000 000 000 | E-mail: biuro@warsawtransportation.pl</p>
+        <p>&copy; 2026 Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+</body>
+  <!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warsaw Transportation Group</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #333; line-height: 1.6; }
+        header { background: #1a252f; color: #fff; padding: 2rem 1rem; text-align: center; }
+        header h1 { margin: 0; font-size: 2.5rem; letter-spacing: 1px; }
+        header p { color: #bdc3c7; font-size: 1.1rem; }
+        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        .services { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 1.5rem; }
+        .card { flex: 1; min-width: 250px; background: #f8f9fa; padding: 1.5rem; border-left: 4px solid #e74c3c; border-radius: 4px; }
+        footer { background: #1a252f; color: #bdc3c7; text-align: center; padding: 1rem; margin-top: 3rem; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Warsaw Transportation Group</h1>
+        <p>Nowoczesny transport, spedycja i logistyka w sercu Europy</p>
+    </header>
+    <div class="container">
+        <h2>O nas</h2>
+        <p>Specjalizujemy się w kompleksowej obsłudze transportowej na terenie Warszawy, całej Polski oraz Unii Europejskiej. Gwarantujemy terminowość i pełne bezpieczeństwo powierzonych ładunków.</p>
+        
+        <h2>Nasze usługi</h2>
+        <div class="services">
+            <div class="card">
+                <h3>Transport Krajowy</h3>
+                <p>Szybkie dostawy dedykowane oraz drobnicowe na terenie całego kraju.</p>
+            </div>
+            <div class="card">
+                <h3>Spedycja Międzynarodowa</h3>
+                <p>Organizacja przewozów w ramach UE z pełną obsługą dokumentacyjną.</p>
+            </div>
+            <div class="card">
+                <h3>Logistyka Miejska</h3>
+                <p>Sprawna dystrybucja towarów na terenie aglomeracji warszawskiej.</p>
+            </div>
+        </div>
+
+        <h2>Kontakt</h2>
+        <p><strong>E-mail:</strong> kontakt@warsawtransportation.pl<br>
+        <strong>Lokalizacja:</strong> Warszawa, Polska</p>
+    </div>
+    <footer>
+        &copy; 2026 Warsaw Transportation Group. Wszelkie prawa zastrzeżone.
+    </footer>
+</body>
+</html>
+</html>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warsaw Transportation Group</title>
+    <style>
+        body { background-color: #0b0d10; color: #e2e8f0; font-family: 'Helvetica Neue', Arial, sans-serif; margin: 0; line-height: 1.6; }
+        .wrapper { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
+        
+        header { border-bottom: 1px solid #1e293b; padding: 3rem 0; display: flex; flex-direction: column; gap: 10px; }
+        .badge { color: #38bdf8; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; font-weight: bold; }
+        h1 { font-size: 3rem; margin: 0; color: #fff; font-weight: 700; }
+        .subtitle { color: #94a3b8; font-size: 1.2rem; max-width: 600px; }
+
+        /* Statystyki */
+        .stats { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; background: #13171f; padding: 2rem; border-radius: 12px; margin: 3rem 0; border: 1px solid #1e293b; }
+        .stat-item h3 { font-size: 2rem; color: #38bdf8; margin: 0; }
+        .stat-item p { margin: 5px 0 0; color: #94a3b8; font-size: 0.9rem; }
+
+        /* Lista usług */
+        .service-row { border-bottom: 1px solid #1e293b; padding: 1.5rem 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .service-row h3 { margin: 0; color: #fff; font-size: 1.3rem; }
+        .service-row p { margin: 5px 0 0; color: #94a3b8; max-width: 600px; }
+
+        /* Kontakt */
+        .contact-box { background: linear-gradient(135deg, #1e293b, #0f172a); padding: 2.5rem; border-radius: 12px; margin-top: 3rem; text-align: center; border: 1px solid #334155; }
+        .contact-btn { display: inline-block; margin-top: 1rem; background: #38bdf8; color: #0b0d10; padding: 12px 30px; border-radius: 6px; text-decoration: none; font-weight: bold; }
+        .contact-btn:hover { background: #7dd3fc; }
+
+        footer { text-align: center; color: #475569; font-size: 0.85rem; margin-top: 4rem; padding-bottom: 2rem; }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <header>
+            <span class="badge">Warszawa • Polska • Europa</span>
+            <h1>Warsaw Transportation Group</h1>
+            <p class="subtitle">Precyzja, punktualność i nowoczesne rozwiązania transportowe dopasowane do wymagań Twojego biznesu.</p>
+        </header>
+
+        <div class="stats">
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>Dyspozycyjność i wsparcie</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Ubezpieczenie i monitoring tras</p>
+            </div>
+            <div class="stat-item">
+                <h3>UE / PL</h3>
+                <p>Zasięg operacyjny</p>
+            </div>
+        </div>
+
+        <h2>Nasza oferta</h2>
+        
+        <div class="service-row">
+            <div>
+                <h3>01. Dedykowany Transport B2B</h3>
+                <p>Stała obsługa logistyczna firm, gwarantowane terminy dostaw oraz indywidualny opiekun zlecenia.</p>
+            </div>
+        </div>
+
+        <div class="service-row">
+            <div>
+                <h3>02. Przewozy Krajowe i Międzynarodowe</h3>
+                <p>Realizacja zleceń na terenie całej Polski oraz krajów Unii Europejskiej z zachowaniem najwyższych standardów bezpieczeństwa.</p>
+            </div>
+        </div>
+
+        <div class="service-row">
+            <div>
+                <h3>03. Logistyka Miejska i Express</h3>
+                <p>Szybkie dostawy na terenie aglomeracji warszawskiej oraz pilne transporty „just-in-time”.</p>
+            </div>
+        </div>
+
+        <div class="contact-box">
+            <h2>Gotowy na współpracę?</h2>
+            <p>Skontaktuj się z naszym działem dyspozycji, aby omówić szczegóły zlecenia.</p>
+            <p><strong>Telefon:</strong> +48 000 000 000 &nbsp;|&nbsp; <strong>E-mail:</strong> kontakt@warsawtransportation.pl</p>
+            <a href="mailto:kontakt@warsawtransportation.pl" class="contact-btn">Napisz wiadomość e-mail</a>
+        </div>
+
+        <footer>
+            &copy; 2026 Warsaw Transportation Group. Warszawa, Polska.
+        </footer>
+    </div>
+
+</body>
+</html>
