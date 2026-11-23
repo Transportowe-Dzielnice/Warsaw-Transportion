@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Kierowcy | Warsaw Transportation Group</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: #f8fafc; margin: 0; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .card { background: #1e293b; padding: 20px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #334155; }
+        h1, h2 { margin-top: 0; color: #f59e0b; }
+        input, select, textarea { width: 100%; padding: 12px; margin: 8px 0 15px; border-radius: 6px; border: 1px solid #475569; background: #0f172a; color: #fff; box-sizing: border-box; font-size: 1rem; }
+        button { width: 100%; padding: 14px; border: none; border-radius: 6px; font-weight: bold; font-size: 1rem; cursor: pointer; margin-bottom: 10px; }
+        .btn-primary { background: #f59e0b; color: #0f172a; }
+        .btn-status { background: #334155; color: #fff; text-align: left; padding-left: 20px; border-left: 5px solid #38bdf8; }
+        .btn-status.active { background: #0284c7; font-weight: bold; }
+        .hidden { display: none; }
+        .badge { display: inline-block; padding: 4px 10px; background: #22c55e; color: #052e16; border-radius: 4px; font-weight: bold; font-size: 0.85rem; }
+        a.back { color: #94a3b8; text-decoration: none; display: inline-block; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="back">&larr; Powrót na stronę główną</a>
+
+    <!-- Ekran logowania -->
+    <div id="login-screen" class="card">
+        <h1>Strefa Kierowcy WTG</h1>
+        <p>Zaloguj się swoim identyfikatorem lub kodem dostępu.</p>
+        <input type="text" id="driver-name" placeholder="Imię i nazwisko / Nr rejestracyjny (np. WA 12345)">
+        <input type="password" id="driver-pass" placeholder="Hasło (testowe: wtg2026)">
+        <button class="btn-primary" onclick="loginDriver()">Zaloguj do systemu</button>
+    </div>
+
+    <!-- Główny panel po zalogowaniu -->
+    <div id="dashboard" class="hidden">
+        <div class="card">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h2 id="welcome-msg" style="margin:0;">Kierowca</h2>
+                <span class="badge" id="current-status-badge">Oczekuje</span>
+            </div>
+            <p style="color:#94a3b8; margin-bottom:0;">Aktualne zlecenie: <strong>#WTG-842 (Warszawa &rarr; Poznań)</strong></p>
+        </div>
+
+        <div class="card">
+            <h2>1. Zmień status zlecenia</h2>
+            <button class="btn-status" onclick="setStatus('Dojazd na załadunek', this)">🚚 Dojazd na załadunek</button>
+            <button class="btn-status" onclick="setStatus('Załadunek w toku', this)">📦 Załadunek w toku</button>
+            <button class="btn-status" onclick="setStatus('W trasie do klienta', this)">🛣️ W trasie do klienta</button>
+            <button class="btn-status" onclick="setStatus('Rozładunek zakończony', this)">✅ Rozładunek zakończony</button>
+            <button class="btn-status" style="border-left-color: #ef4444;" onclick="setStatus('ZGŁOSZONO OPÓŹNIENIE', this)">⚠️ Zgłoś opóźnienie / problem</button>
+        </div>
+
+        <div class="card">
+            <h2>2. Raport dzienny / Tankowanie</h2>
+            <form onsubmit="submitReport(event)">
+                <input type="number" id="odometer" placeholder="Aktualny stan licznika (km)" required>
+                <input type="number" id="fuel" placeholder="Zatankowane paliwo w litrach (opcjonalnie)">
+                <textarea id="notes" rows="3" placeholder="Uwagi dotyczące pojazdu, dokumentów CMR lub trasy..."></textarea>
+                <button type="submit" class="btn-primary">Wyślij raport do dyspozytora</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function loginDriver() {
+        const name = document.getElementById('driver-name').value;
+        const pass = document.getElementById('driver-pass').value;
+        if (pass === 'wtg2026' && name.trim() !== '') {
+            document.getElementById('login-screen').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('hidden');
+            document.getElementById('welcome-msg').innerText = name;
+        } else {
+            alert('Wpisz swoje dane oraz poprawne hasło (wtg2026).');
+        }
+    }
+
+    function setStatus(statusText, btnElement) {
+        document.getElementById('current-status-badge').innerText = statusText;
+        document.querySelectorAll('.btn-status').forEach(b => b.classList.remove('active'));
+        btnElement.classList.add('active');
+        alert('Status zaktualizowany na: ' + statusText);
+    }
+
+    function submitReport(e) {
+        e.preventDefault();
+        alert('Raport został zapisany i przekazany do dyspozytorni!');
+        e.target.reset();
+    }
+</script>
+
+</body>
+</html>
